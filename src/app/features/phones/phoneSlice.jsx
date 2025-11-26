@@ -8,7 +8,7 @@ const phoneSlice = createSlice({
   name: "phone", //
   initialState: initialState,
   reducers: {
-    phones: (state) => { // ceci génère une action avec {type: "phone/phones", payload: undefined} => généré par reduxToolkit
+    phones: (state, action) => { // ceci génère une action avec {type: "phone/phones", payload: undefined} => généré par reduxToolkit
       state.phones--
     }
   }
