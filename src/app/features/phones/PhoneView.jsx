@@ -1,12 +1,15 @@
 import phone from "../../../images/phone.png"
 import tablet from "../../../images/tablet.png"
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { phones as phonesAction} from "./phoneSlice";
 import {tablets as tabletsAction} from "./phoneSlice";
 
 
 const PhoneView = () => {
+
+  const [phoneNumber, setPhoneNumber] = useState("")
+  const [tabletNumber, setTabletNumber] = useState("")
 
   const { phones, tablets } =  useSelector((state) => state.phone)
 
@@ -22,7 +25,14 @@ const PhoneView = () => {
         </p>
 
         <div className="btnContainer">
-          <button onClick={() => dispatch(phonesAction())}>Acheter</button>
+          <button onClick={() => dispatch(phonesAction(phoneNumber))}>Acheter</button>
+           <input
+            type="number"
+            min="1"
+            max={phones}
+            value={phoneNumber}
+            onChange={(event) => setPhoneNumber(event.target.value)}
+          />
         </div>
       </div>
 
@@ -33,7 +43,14 @@ const PhoneView = () => {
         </p>
 
         <div className="btnContainer">
-          <button onClick={() => dispatch(tabletsAction(2))}>Acheter</button>
+          <button onClick={() => dispatch(tabletsAction(tabletNumber))}>Acheter</button>
+          <input
+            type="number"
+            min="1"
+             max={tablets}
+            value={tabletNumber}
+            onChange={(event) => setTabletNumber(event.target.value)}
+          />
         </div>
       </div>
     </Fragment>
