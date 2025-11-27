@@ -9,7 +9,7 @@ const tvSlice = createSlice({
   name: "tv",
   initialState: initialState,
   reducers : {
-    tvs: (state) => {
+    tvs: (state) => {  // ceci génère une action avec {type: "tv/tvs", payload: undefined} => généré par reduxToolkit
       state.tvs--
     }
   }

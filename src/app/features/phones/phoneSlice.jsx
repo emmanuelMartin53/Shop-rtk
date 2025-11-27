@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import {tvs as tvActions} from "../tvs/tvSlice"
 
 const initialState = {
   phones: 5
@@ -11,7 +12,14 @@ const phoneSlice = createSlice({
     phones: (state, action) => { // ceci génère une action avec {type: "phone/phones", payload: undefined} => généré par reduxToolkit
       state.phones--
     }
+  },
+  extraReducers: (builder) => {
+    builder
+    .addCase(tvActions,  (state, action) => {
+       state.phones--
+    })
   }
+
 })
 
 
